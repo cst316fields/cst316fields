@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="fieldsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="name">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="date" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Reservation_Field">
+          <End Role="Field" Type="Self.Field" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_name">
+          <End Role="name" Type="Self.name" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="name">
+              <PropertyRef Name="name" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fieldsModelStoreContainer">
+          <EntitySet Name="Field" EntityType="Self.Field" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="name" EntityType="Self.name" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Reservation_Field" Association="Self.FK_Reservation_Field">
+            <End Role="Field" EntitySet="Field" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_name" Association="Self.FK_Reservation_name">
+            <End Role="name" EntitySet="name" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fieldsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FieldEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_Field" FromRole="Field" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="nameEntity">
+          <Key>
+            <PropertyRef Name="name1" />
+          </Key>
+          <Property Name="name1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_name" FromRole="name" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="ReservationEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Field" Relationship="Self.FK_Reservation_Field" FromRole="Reservation" ToRole="Field" />
+          <NavigationProperty Name="name1" Relationship="Self.FK_Reservation_name" FromRole="Reservation" ToRole="name" />
+        </EntityType>
+        <Association Name="FK_Reservation_Field">
+          <End Role="Field" Type="fieldsModel.FieldEntity" Multiplicity="1" />
+          <End Role="Reservation" Type="fieldsModel.ReservationEntity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_name">
+          <End Role="name" Type="fieldsModel.nameEntity" Multiplicity="1" />
+          <End Role="Reservation" Type="fieldsModel.ReservationEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="name">
+              <PropertyRef Name="name1" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fieldsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FieldEntities" EntityType="fieldsModel.FieldEntity" />
+          <EntitySet Name="nameEntities" EntityType="fieldsModel.nameEntity" />
+          <EntitySet Name="ReservationEntities" EntityType="fieldsModel.ReservationEntity" />
+          <AssociationSet Name="FK_Reservation_Field" Association="Self.FK_Reservation_Field">
+            <End Role="Field" EntitySet="FieldEntities" />
+            <End Role="Reservation" EntitySet="ReservationEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_name" Association="Self.FK_Reservation_name">
+            <End Role="name" EntitySet="nameEntities" />
+            <End Role="Reservation" EntitySet="ReservationEntities" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fieldsModelStoreContainer" CdmEntityContainer="fieldsEntities">
+          <EntitySetMapping Name="FieldEntities">
+            <EntityTypeMapping TypeName="fieldsModel.FieldEntity">
+              <MappingFragment StoreEntitySet="Field">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nameEntities">
+            <EntityTypeMapping TypeName="fieldsModel.nameEntity">
+              <MappingFragment StoreEntitySet="name">
+                <ScalarProperty Name="name1" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservationEntities">
+            <EntityTypeMapping TypeName="fieldsModel.ReservationEntity">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
