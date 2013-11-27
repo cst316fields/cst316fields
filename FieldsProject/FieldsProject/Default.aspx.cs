@@ -13,5 +13,20 @@ namespace FieldsProject
         {
 
         }
+
+        protected void Fields_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Reservations_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void MyReservations_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
