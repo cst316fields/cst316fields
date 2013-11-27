@@ -15,7 +15,7 @@ namespace FieldServiceWCF
         Field getField(int id);
 
         [OperationContract]
-        List<Reservation> getAllReservations();
+        DataTable getAllReservations();
 
         [OperationContract]
         DataTable getAllFields();

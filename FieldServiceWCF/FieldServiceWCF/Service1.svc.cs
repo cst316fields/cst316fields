@@ -43,8 +43,9 @@ namespace FieldServiceWCF
 
         }
 
-        public List<Field> getAllFields()
+        public DataTable getAllFields()
         {
+            DataTable dt = new DataTable();
             using (fieldsEntities context = new fieldsEntities())
             {
                 List<Field> l = new List<Field>();
@@ -52,7 +53,14 @@ namespace FieldServiceWCF
                 {
                     l.Add(translateFieldEntity(r));
                 }
-                return l;
+                int i = 0;
+
+                foreach (var str in l)
+                {
+                    dt.Rows[i][0] = str.ToString();
+                    i++;
+                }
+                return dt;
             }
         }
 
