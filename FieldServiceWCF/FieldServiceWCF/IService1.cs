@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -17,7 +18,15 @@ namespace FieldServiceWCF
         List<Reservation> getAllReservations();
 
         [OperationContract]
-        List<Field> getAllFields();
+        DataTable getAllFields();
+    }
+    [DataContract]
+    public class User
+    {
+        [DataMember]
+        public string user { get; set; }
+        [DataMember]
+        public string password { get; set; }
     }
 
     [DataContract]
@@ -30,9 +39,12 @@ namespace FieldServiceWCF
     }
 
     [DataContract]
-    public class Name
+    public class Person
     {
+        [DataMember]
         public string name { get; set; }
+        [DataMember]
+        public int phone { get; set; }
     }
 
     [DataContract]

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Data;
+using System.Data.Common;
 
 namespace FieldServiceWCF
 {
@@ -19,8 +21,9 @@ namespace FieldServiceWCF
             }
         }
 
-        public List<Reservation> getAllReservations()
+        public DataTable getAllReservations()
         {
+            DataTable dt = new DataTable();
             using (fieldsEntities context = new fieldsEntities())
             {
                 List<Reservation> listR = new List<Reservation>();
@@ -28,8 +31,14 @@ namespace FieldServiceWCF
                 {
                     listR.Add(translateReservationEntity(v));
                 }
-
-                return listR;
+                int i = 0;
+                
+                foreach (var str in listR)
+                {
+                    dt.Rows[i][0] = str.ToString();
+                    i++;
+                }
+                return dt;
             }
 
         }
