@@ -18,6 +18,7 @@
         <SortedDescendingCellStyle BackColor="#FFFDF8" />
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
+    <asp:TextBox ID="TestTextBox" runat="server" Width="252px"></asp:TextBox>
     <br />
   
 </asp:Content>

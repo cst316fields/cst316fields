@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service1;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -17,19 +18,20 @@ namespace FieldsProject
 
         protected void Fields_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = new FieldsProject.Service().getAllFields();
+            GridView1.DataSource = new DataService().getAllFields();
             GridView1.DataBind();
         }
 
         protected void Reservations_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = new FieldsProject.Service().getAllReservations();
+            GridView1.DataSource = new DataService().getAllReservations();
             GridView1.DataBind();
         }
 
         protected void MyReservations_Click(object sender, EventArgs e)
         {
-
+            Field field = new DataService().getField(1);
+            TestTextBox.Text = string.Format("Field {0} is a {1} field.", field.fieldID.ToString(), field.fieldType).ToString();
         }
     }
 }
