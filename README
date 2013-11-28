@@ -1,0 +1,98 @@
+cst316fields
+============
+---------------------
+
+what's up:  we are going to install visual studio 2013   (if you can't install what versiion you can)
+
+each of us will work on learning a piece of visual studio -- how to code your piece -- 
+  
+   -- so you will be responsible for knowing how to code your piece next tues.
+
+   --  we will group code the project on one laptop -- then put the result in github
+
+  -- no forking around - we should be near finished by the end of next class
+
+  -- you need to figure out how to code according to the 'story' which I will detail below
+
+ALSO DECIDED: we are using sql server as database
+
+-------------------------
+
+Rick:  the C# code -- for the controller   ie. what happens when buttons get pushed
+
+Logan:  html and how to format a page -- you work on the right side of the page --with the field info and reservation form
+
+Keith/Chris :  data base & services - know how to code the tables on tues  -- both of you also lookup and learn   gridview control - we may use them
+
+Nolan:  the asp gui controls and how to format them on the page -- you work on the left side of the page -- the buttons for fields, reservation, and cancel
+
+note: we could also use WPF - but may be better off NOT doing it for lab5 due to time constraints
+
+--------------------------
+
+USE CASE: (and info on how web app will look and operate)
+
+we have a parks & rec website -- its function is to rent out playing fields
+
+user -- wants to rent out a soccer field on a specific day
+
+
+home page has a menu on the left: 
+
+
+
+user pushes button that says 'fields' -- button has code behind that gets fields info from database and displays the following on the screen to the right:
+
+field #             type          date1  date2   date3   date4   
+
+example
+
+1                       soccer         u         r            u           r
+
+
+user pushes button 'schedule' on the left -- brings up a gui form on the right (next to the fields info) -- shows the info:
+
+field #   __________
+
+date      ---------------
+
+name     ---------------
+
+
+user then pushes a 'save' button on this form -- code behind the save -- sends data back to database
+
+field info display updated:  an 'r' gets placed in the slot that was reserved
+
+-------------------------------------------------------------
+
+alternate use case:  user wants to cancel -- there is a 'cancel' button on the left -- user presses cancel
+
+   -- lets work on that if/after we get the rest working 
+
+-------------------------------------------------------------
+
+database schema -- lets start out making it easy -- then add more advanced date types and user info IF WE HAVE TIME
+
+table:  Field
+
+attributes:  field#   int,       field type     string, 
+
+
+table:  Person
+
+attributes:   name  string
+
+
+table:  Reservation
+
+attributes:  field#  int,     name string,   date  string   -- as in date1  date2   date3   etc.
+
+
+--------------------------------------------------------------
+
+note on my end: if I don't get my version up to date, I will just code on my version (2008) and transfer my code in one way or another       
+
+
+2nd note: this does not seem like much, but there is a learning curve
+
+  -- hard parts -- lining up gui controls, connecting to database and queries,  displaying data on the screen
