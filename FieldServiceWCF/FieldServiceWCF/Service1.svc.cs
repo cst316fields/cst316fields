@@ -13,9 +13,10 @@ namespace FieldServiceWCF
     {
         public Field getField(int id)
         {
-            using (fieldsEntities context = new fieldsEntities())
+            
+            using (fieldsData context = new fieldsData())
             {
-                var fieldE = (from p in context.FieldEntities where p.Id==id select p).First();
+                var fieldE = (from p in context.FieldEs where p.Id==id select p).First();
 
                 return translateFieldEntity(fieldE);
             }
@@ -24,10 +25,10 @@ namespace FieldServiceWCF
         public DataTable getAllReservations()
         {
             DataTable dt = new DataTable();
-            using (fieldsEntities context = new fieldsEntities())
+            using (fieldsData context = new fieldsData())
             {
                 List<Reservation> listR = new List<Reservation>();
-                foreach(var v in context.ReservationEntities)
+                foreach(var v in context.ReservationEs)
                 {
                     listR.Add(translateReservationEntity(v));
                 }
@@ -45,39 +46,46 @@ namespace FieldServiceWCF
 
         public DataTable getAllFields()
         {
-            DataTable dt = new DataTable();
-            using (fieldsEntities context = new fieldsEntities())
+            var table = new DataTable();
+            using (fieldsData context = new fieldsData())
             {
-                List<Field> l = new List<Field>();
-                foreach(var r in context.FieldEntities)
-                {
-                    l.Add(translateFieldEntity(r));
-                }
-                int i = 0;
 
-                foreach (var str in l)
+                //List<Field> l = new List<Field>();
+                //foreach (var r in context.FieldEntities)
+                //{
+                //   l.Add(translateFieldEntity(r));
+                //}
+                //int i = 0;
+
+
+                table.Columns.Add("Id", typeof(int));
+                table.Columns.Add("Type", typeof(string));
+
+                foreach (var entity in context.FieldEs)
                 {
-                    dt.Rows[i][0] = str.ToString();
-                    i++;
+                    var row = table.NewRow();
+                    row["Id"] = entity.Id;
+                    row["Type"] = entity.Type;
+                    table.Rows.Add(row);
                 }
-                return dt;
             }
+              return table;
         }
 
-        private Field translateFieldEntity( FieldEntity fieldEntity)
+        private Field translateFieldEntity( FieldE fieldEntity)
         {
             Field field = new Field();
             field.fieldID = fieldEntity.Id;
-            field.fieldType = fieldEntity.type;
+            field.fieldType = fieldEntity.Type;
             return field;
         }
 
-        private Reservation translateReservationEntity(ReservationEntity r)
+        private Reservation translateReservationEntity(ReservationE r)
         {
             Reservation reservation = new Reservation();
             reservation.fieldID = r.Id;
             reservation.name = r.name;
-            reservation.date = r.date;
+            reservation.date = Convert.ToString(r.date);
             return reservation;
         }
     }

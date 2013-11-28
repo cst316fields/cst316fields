@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,12 +17,14 @@ namespace FieldsProject
 
         protected void Fields_Click(object sender, EventArgs e)
         {
-
+            GridView1.DataSource = new FieldsProject.Service().getAllFields();
+            GridView1.DataBind();
         }
 
         protected void Reservations_Click(object sender, EventArgs e)
         {
-
+            GridView1.DataSource = new FieldsProject.Service().getAllReservations();
+            GridView1.DataBind();
         }
 
         protected void MyReservations_Click(object sender, EventArgs e)

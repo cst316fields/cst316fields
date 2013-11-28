@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace FieldServiceWCF
+namespace FieldsProject
 {
     [ServiceContract]
     public interface FieldService
@@ -19,14 +19,6 @@ namespace FieldServiceWCF
 
         [OperationContract]
         DataTable getAllFields();
-    }
-    [DataContract]
-    public class User
-    {
-        [DataMember]
-        public string user { get; set; }
-        [DataMember]
-        public string password { get; set; }
     }
 
     [DataContract]
@@ -44,7 +36,7 @@ namespace FieldServiceWCF
         [DataMember]
         public string name { get; set; }
         [DataMember]
-        public int phone { get; set; }
+        public string phone { get; set; }
         [DataMember]
         public string address { get; set; }
     }
@@ -58,5 +50,14 @@ namespace FieldServiceWCF
         public string name { get; set; }
         [DataMember]
         public string date { get; set; }
+    }
+
+    [DataContract]
+    public class User
+    {
+        [DataMember]
+        public string user { get; set; }
+        [DataMember]
+        public string password { get; set; }
     }
 }

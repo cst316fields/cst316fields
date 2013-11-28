@@ -12,13 +12,17 @@ namespace FieldServiceWCF
     using System;
     using System.Collections.Generic;
     
-    public partial class ReservationEntity
+    public partial class PersonE
     {
-        public int Id { get; set; }
-        public string name { get; set; }
-        public string date { get; set; }
+        public PersonE()
+        {
+            this.Reservations = new HashSet<ReservationE>();
+        }
     
-        public virtual FieldEntity Field { get; set; }
-        public virtual nameEntity name1 { get; set; }
+        public string name { get; set; }
+        public string phone { get; set; }
+        public string address { get; set; }
+    
+        public virtual ICollection<ReservationE> Reservations { get; set; }
     }
 }

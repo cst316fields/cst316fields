@@ -7,16 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FieldServiceWCF
+namespace FieldsProject
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class FieldEntity
+    public partial class PersonEntity
     {
-        public int Id { get; set; }
-        public string type { get; set; }
+        public PersonEntity()
+        {
+            this.Reservations = new HashSet<ReservationEntity>();
+        }
     
-        public virtual ReservationEntity Reservation { get; set; }
+        public string name { get; set; }
+        public string phone { get; set; }
+        public string address { get; set; }
+    
+        public virtual ICollection<ReservationEntity> Reservations { get; set; }
     }
 }

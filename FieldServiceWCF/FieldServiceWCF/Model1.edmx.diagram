@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9cc428f7b5ce4925933e0a2af3c04a87" Name="Diagram1">
-        <EntityTypeShape EntityType="fieldsModel.FieldEntity" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="fieldsModel.nameEntity" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="fieldsModel.ReservationEntity" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="fieldsModel.FK_Reservation_Field" ManuallyRouted="false" />
-        <AssociationConnector Association="fieldsModel.FK_Reservation_name" ManuallyRouted="false" />
+      <Diagram DiagramId="06230fcef22543e88b73d56335b05156" Name="Diagram1">
+        <EntityTypeShape EntityType="fieldsDataBaseModel.FieldE" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fieldsDataBaseModel.PersonE" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="fieldsDataBaseModel.ReservationE" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fieldsDataBaseModel.UserE" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="fieldsDataBaseModel.FK_Reservation_Field" ManuallyRouted="false" />
+        <AssociationConnector Association="fieldsDataBaseModel.FK_Reservation_Person" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

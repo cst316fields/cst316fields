@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FieldServiceWCF
+namespace FieldsProject
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class fieldsData : DbContext
+    public partial class fieldsEntities : DbContext
     {
-        public fieldsData()
-            : base("name=fieldsData")
+        public fieldsEntities()
+            : base("name=fieldsEntities")
         {
         }
     
@@ -25,9 +25,9 @@ namespace FieldServiceWCF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<FieldE> FieldEs { get; set; }
-        public virtual DbSet<PersonE> PersonEs { get; set; }
-        public virtual DbSet<ReservationE> ReservationEs { get; set; }
-        public virtual DbSet<UserE> UserEs { get; set; }
+        public virtual DbSet<FieldEntity> FieldEntities { get; set; }
+        public virtual DbSet<PersonEntity> PersonEntities { get; set; }
+        public virtual DbSet<ReservationEntity> ReservationEntities { get; set; }
+        public virtual DbSet<UserEntity> UserEntities { get; set; }
     }
 }
