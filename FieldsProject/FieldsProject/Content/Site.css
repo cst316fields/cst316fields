@@ -26,3 +26,41 @@ input[type="password"] {
         padding: 0;
     }
 }
+
+/* Styles below are specific to our site. */
+
+div.container_main {
+    margin-top: 20px;
+}
+
+div.container_button {
+    float: left;
+    padding: 5px;
+    background-color: #222222;
+}
+
+div.container_content {
+    float: left;
+    margin-left: 20px;
+}
+
+.nav_button {
+    border: 0px;
+    width: 100%;
+    outline: none;
+    color: #999999;
+    font-size: large;
+    background-color: #222222;
+    padding: 10px;
+}
+
+.nav_button:hover {
+    background-color: #5D7B9D;
+    color: white;
+}
+
+div.footer {
+    padding-top: 20px;
+    clear: both;
+    text-align: center;
+}
