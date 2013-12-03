@@ -44,8 +44,6 @@ namespace Service1
             return table;
         }
 
-
-
         public DataTable getAllFields()
         {
             var table = new DataTable();
@@ -90,11 +88,6 @@ namespace Service1
             return table;
         }
 
-        public void addField(int fieldId, string type)
-        {
-            throw new NotImplementedException();
-        }
-
         public DataTable getPersonFromPhoneNum(string phoneNum)
         {
             var table = new DataTable();
@@ -137,15 +130,6 @@ namespace Service1
             return table;
         }
 
-        public Person getPersonFromName(string name)
-        {
-            using (fieldsEntities context = new fieldsEntities())
-            {
-                var fieldE = (from p in context.PersonEntities where p.name == name select p).First();
-                return translatePersonEntity(fieldE);
-            }
-        }
-
         public DataTable getAllPeople()
         {
             var table = new DataTable();
@@ -164,11 +148,6 @@ namespace Service1
                 }
             }
             return table;
-        }
-
-        public DataTable addPerson(string name, string phone, string address)
-        {
-            throw new NotImplementedException();
         }
 
         public DataTable getReservationsByDate(DateTime date)
@@ -257,12 +236,47 @@ namespace Service1
 
         public DataTable getReservationsByField(int fieldId)
         {
-            throw new NotImplementedException();
+            DataTable table = new DataTable();
+            using (fieldsEntities context = new fieldsEntities())
+            {
+                table.Columns.Add("Field #", typeof(int));
+                table.Columns.Add("Field Name", typeof(string));
+                table.Columns.Add("Address", typeof(string));
+                table.Columns.Add("Date and time", typeof(string));
+                foreach (var res in (from r in context.ReservationEntities where r.Id == fieldId select r))
+                {
+                    var row = table.NewRow();
+                    var field = (from f in context.FieldEntities where f.Id == res.Id select f).First();
+                    row["Field Name"] = field.name;
+                    row["Address"] = field.address;
+                    row["Field #"] = res.Id;
+                    row["Date and time"] = res.date.Date.ToString();
+                    table.Rows.Add(row);
+                }
+            }
+            return table;
         }
 
-        public void addReservation(int fieldId, string name, string date)
+        public bool addReservation(int fieldId, string name, DateTime date)
         {
-            throw new NotImplementedException();
+            bool success = true;
+            ReservationEntity res = new ReservationEntity();
+            res.Id = fieldId;
+            res.name = name;
+            res.date = date;
+            try
+            {
+                using (fieldsEntities context = new fieldsEntities())
+                {
+                    context.ReservationEntities.Add(res);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                success = false;
+            }
+            return success;
         }
 
         public bool authenticateUser(string userName, string password)

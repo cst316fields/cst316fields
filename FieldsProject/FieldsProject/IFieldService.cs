@@ -33,14 +33,6 @@ namespace FieldsProject
         /// <returns>DataTable</returns>
         [OperationContract]
         DataTable getAllFields();
-
-        /// <summary>
-        /// Add a field to the Field table
-        /// </summary>
-        /// <param name="fieldId"></param>
-        /// <param name="type"></param>
-        [OperationContract]
-        void addField(int fieldId, string type);
         
         /// <summary>
         /// Returns all users with given phone number
@@ -59,29 +51,11 @@ namespace FieldsProject
         DataTable getPersonFromAddress(string address);
 
         /// <summary>
-        /// Returns user with given name, access attributes with Person.name, Person.phone, Person.address
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>Person</returns>
-        [OperationContract]
-        Person getPersonFromName(string name);
-
-        /// <summary>
         /// Returns the entire Person table
         /// </summary>
         /// <returns>DataTable</returns>
         [OperationContract]
         DataTable getAllPeople();
-
-        /// <summary>
-        /// Adds a person to Person table.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="phone"></param>
-        /// <param name="address"></param>
-        /// <returns></returns>
-        [OperationContract]
-        DataTable addPerson(string name, string phone, string address);
 
         /// <summary>
         /// Returns all reservations on a certain date
@@ -121,7 +95,7 @@ namespace FieldsProject
         /// <param name="name"></param>
         /// <param name="date"></param>
         [OperationContract]
-        void addReservation(int fieldId, string name, string date);
+        bool addReservation(int fieldId, string name, DateTime date);
 
         /// <summary>
         /// Athenticate user name and password.
