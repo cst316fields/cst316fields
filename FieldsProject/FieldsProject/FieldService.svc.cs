@@ -249,7 +249,16 @@ namespace Service1
 
         public bool authenticateUser(string userName, string password)
         {
-            throw new NotImplementedException();
+            bool authenticated = false;
+            using (fieldsEntities context = new fieldsEntities())
+            {
+                foreach(var user in (from u in context.UserEntities where u.username == userName select u))
+                {
+                    if (user.password == password)
+                        authenticated = true;
+                }
+            }
+            return authenticated;
         }
 
         public void createUser(string userName, string password, string phoneNum, string address)
@@ -281,6 +290,14 @@ namespace Service1
             person.phone = p.phone;
             person.address = p.address;
             return person;
+        }
+
+        private User translateUserEntity(UserEntity u)
+        {
+            User user = new User();
+            user.user = u.username;
+            user.password = u.password;
+            return user;
         }
     }
 }
