@@ -27,7 +27,7 @@ namespace FieldsProject
     
         public virtual DbSet<FieldEntity> FieldEntities { get; set; }
         public virtual DbSet<PersonEntity> PersonEntities { get; set; }
-        public virtual DbSet<ReservationEntity> ReservationEntities { get; set; }
         public virtual DbSet<UserEntity> UserEntities { get; set; }
+        public virtual DbSet<ReservationEntity> ReservationEntities { get; set; }
     }
 }

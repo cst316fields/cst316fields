@@ -4,13 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="fieldsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="fieldsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Field">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -26,7 +29,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="date" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -74,8 +77,7 @@
             <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="fieldsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -85,7 +87,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_Field" FromRole="Field" ToRole="Reservation" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservation" Relationship="fieldsModel.FK_Reservation_Field" FromRole="FieldEntity" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="PersonEntity">
           <Key>
@@ -94,17 +99,7 @@
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Person" FromRole="Person" ToRole="Reservation" />
-        </EntityType>
-        <EntityType Name="ReservationEntity">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Field" Relationship="Self.FK_Reservation_Field" FromRole="Reservation" ToRole="Field" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Reservation_Person" FromRole="Reservation" ToRole="Person" />
+          <NavigationProperty Name="Reservations" Relationship="fieldsModel.FK_Reservation_Person" FromRole="PersonEntity" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="UserEntity">
           <Key>
@@ -114,11 +109,35 @@
           <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityContainer Name="fieldsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FieldEntities" EntityType="fieldsModel.FieldEntity" />
+          <EntitySet Name="PersonEntities" EntityType="fieldsModel.PersonEntity" />
+          <EntitySet Name="UserEntities" EntityType="fieldsModel.UserEntity" />
+          <EntitySet Name="ReservationEntities" EntityType="fieldsModel.ReservationEntity" />
+          <AssociationSet Name="FK_Reservation_Field" Association="fieldsModel.FK_Reservation_Field">
+            <End Role="FieldEntity" EntitySet="FieldEntities" />
+            <End Role="Reservation" EntitySet="ReservationEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Person" Association="fieldsModel.FK_Reservation_Person">
+            <End Role="PersonEntity" EntitySet="PersonEntities" />
+            <End Role="Reservation" EntitySet="ReservationEntities" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ReservationEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Field" Relationship="fieldsModel.FK_Reservation_Field" FromRole="Reservation" ToRole="FieldEntity" />
+          <NavigationProperty Name="Person" Relationship="fieldsModel.FK_Reservation_Person" FromRole="Reservation" ToRole="PersonEntity" />
+        </EntityType>
         <Association Name="FK_Reservation_Field">
-          <End Role="Field" Type="fieldsModel.FieldEntity" Multiplicity="1" />
-          <End Role="Reservation" Type="fieldsModel.ReservationEntity" Multiplicity="0..1" />
+          <End Type="fieldsModel.FieldEntity" Role="FieldEntity" Multiplicity="1" />
+          <End Type="fieldsModel.ReservationEntity" Role="Reservation" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Field">
+            <Principal Role="FieldEntity">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Reservation">
@@ -127,10 +146,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reservation_Person">
-          <End Role="Person" Type="fieldsModel.PersonEntity" Multiplicity="1" />
-          <End Role="Reservation" Type="fieldsModel.ReservationEntity" Multiplicity="*" />
+          <End Type="fieldsModel.PersonEntity" Role="PersonEntity" Multiplicity="1" />
+          <End Type="fieldsModel.ReservationEntity" Role="Reservation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Person">
+            <Principal Role="PersonEntity">
               <PropertyRef Name="name" />
             </Principal>
             <Dependent Role="Reservation">
@@ -138,20 +157,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="fieldsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="FieldEntities" EntityType="fieldsModel.FieldEntity" />
-          <EntitySet Name="PersonEntities" EntityType="fieldsModel.PersonEntity" />
-          <EntitySet Name="ReservationEntities" EntityType="fieldsModel.ReservationEntity" />
-          <EntitySet Name="UserEntities" EntityType="fieldsModel.UserEntity" />
-          <AssociationSet Name="FK_Reservation_Field" Association="Self.FK_Reservation_Field">
-            <End Role="Field" EntitySet="FieldEntities" />
-            <End Role="Reservation" EntitySet="ReservationEntities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reservation_Person" Association="Self.FK_Reservation_Person">
-            <End Role="Person" EntitySet="PersonEntities" />
-            <End Role="Reservation" EntitySet="ReservationEntities" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -161,6 +166,9 @@
           <EntitySetMapping Name="FieldEntities">
             <EntityTypeMapping TypeName="fieldsModel.FieldEntity">
               <MappingFragment StoreEntitySet="Field">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="type" ColumnName="type" />
               </MappingFragment>
@@ -175,20 +183,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ReservationEntities">
-            <EntityTypeMapping TypeName="fieldsModel.ReservationEntity">
-              <MappingFragment StoreEntitySet="Reservation">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="date" ColumnName="date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserEntities">
             <EntityTypeMapping TypeName="fieldsModel.UserEntity">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservationEntities">
+            <EntityTypeMapping TypeName="fieldsModel.ReservationEntity">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

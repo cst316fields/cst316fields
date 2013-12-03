@@ -148,6 +148,12 @@ namespace FieldsProject
         public int fieldID { get; set; }
         [DataMember]
         public string fieldType { get; set; }
+        [DataMember]
+        public string fieldName { get; set; }
+        [DataMember]
+        public string fieldAddress { get; set; }
+        [DataMember]
+        public string fieldDescription { get; set; }
     }
 
     [DataContract]
@@ -169,7 +175,7 @@ namespace FieldsProject
         [DataMember]
         public string name { get; set; }
         [DataMember]
-        public string date { get; set; }
+        public DateTime date { get; set; }
     }
 
     [DataContract]

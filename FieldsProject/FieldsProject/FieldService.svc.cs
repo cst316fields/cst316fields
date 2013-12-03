@@ -31,13 +31,13 @@ namespace Service1
             {
                 table.Columns.Add("Field #", typeof(int));
                 table.Columns.Add("Person", typeof(string));
-                table.Columns.Add("Date", typeof(string));
+                table.Columns.Add("Date", typeof(DateTime));
                 foreach (var res in context.ReservationEntities)
                 {
                     var row = table.NewRow();
                     row["Field #"] = res.Id;
                     row["Person"] = res.name;
-                    row["Date"] = res.date.ToString();
+                    row["Date"] = res.date;
                     table.Rows.Add(row);
                 }
             }
@@ -206,7 +206,7 @@ namespace Service1
             Reservation reservation = new Reservation();
             reservation.fieldID = r.Id;
             reservation.name = r.name;
-            reservation.date = Convert.ToString(r.date);
+            reservation.date = Convert.ToDateTime(r.date);
             return reservation;
         }
 
