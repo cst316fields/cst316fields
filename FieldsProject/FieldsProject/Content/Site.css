@@ -29,28 +29,40 @@ input[type="password"] {
 
 /* Styles below are specific to our site. */
 
-div.container_main {
-    margin-top: 20px;
+table.container_main {
+    width: 100%;
+    margin-top: 10px;
 }
 
-div.container_button {
-    float: left;
-    padding: 5px;
-    background-color: #222222;
+td.container_button {
+    vertical-align: top;
+    padding: 10px;
+    width: 200px;
 }
 
-div.container_content {
-    float: left;
-    margin-left: 20px;
+td.container_content {
+    vertical-align: top;
+    padding: 10px;
 }
 
 .nav_button {
     border: 0px;
-    width: 100%;
+    width: 200px;
     outline: none;
     color: #999999;
     font-size: large;
     background-color: #222222;
+    padding: 10px;
+}
+
+.nav_button_inactive {
+    border: 0px;
+    width: 200px;
+    outline: none;
+    color: #999999;
+    font-size: large;
+    background-color: #444444;
+    text-align: center;
     padding: 10px;
 }
 
