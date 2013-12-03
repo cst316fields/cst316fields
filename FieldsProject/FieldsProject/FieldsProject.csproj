@@ -187,6 +187,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Pages\CancelReservation.aspx" />
+    <Content Include="Pages\CreateAccount.aspx" />
+    <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\MakeReservation.aspx" />
+    <Content Include="Pages\MyReservations.aspx" />
+    <Content Include="Pages\showFieldsPage.aspx" />
+    <Content Include="Pages\showReservationsPage.aspx" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -358,6 +365,55 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Pages\CancelReservation.aspx.cs">
+      <DependentUpon>CancelReservation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CancelReservation.aspx.designer.cs">
+      <DependentUpon>CancelReservation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateAccount.aspx.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CreateAccount.aspx.designer.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MakeReservation.aspx.cs">
+      <DependentUpon>MakeReservation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MakeReservation.aspx.designer.cs">
+      <DependentUpon>MakeReservation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyReservations.aspx.cs">
+      <DependentUpon>MyReservations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MyReservations.aspx.designer.cs">
+      <DependentUpon>MyReservations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\showFieldsPage.aspx.cs">
+      <DependentUpon>showFieldsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\showFieldsPage.aspx.designer.cs">
+      <DependentUpon>showFieldsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\showReservationsPage.aspx.cs">
+      <DependentUpon>showReservationsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\showReservationsPage.aspx.designer.cs">
+      <DependentUpon>showReservationsPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PersonEntity.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

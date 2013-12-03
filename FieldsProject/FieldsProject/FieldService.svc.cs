@@ -178,31 +178,34 @@ namespace Service1
                     row["8:00pm to 10:00pm"] = "Unreserved";
                     foreach (var res in (from r in context.ReservationEntities where r.Id == field.Id select r))
                     {
-                        switch (res.date.Hour)
+                        if (res.date.Month == date.Month && res.date.Day == date.Day)
                         {
-                            case 8:
-                                row["8:00am to 10:00am"] = res.name;
-                                break;
-                            case 10:
-                                row["10:00am to 12:00pm"] = res.name;
-                                break;
-                            case 12:
-                                row["12:00pm to 2:00pm"] = res.name;
-                                break;
-                            case 14:
-                                row["2:00pm to 4:00pm"] = res.name;
-                                break;
-                            case 16:
-                                row["4:00pm to 6:00pm"] = res.name;
-                                break;
-                            case 18:
-                                row["6:00pm to 8:00pm"] = res.name;
-                                break;
-                            case 20:
-                                row["8:00pm to 10:00pm"] = res.name;
-                                break;
-                            default:
-                                break;
+                            switch (res.date.Hour)
+                            {
+                                case 8:
+                                    row["8:00am to 10:00am"] = res.name;
+                                    break;
+                                case 10:
+                                    row["10:00am to 12:00pm"] = res.name;
+                                    break;
+                                case 12:
+                                    row["12:00pm to 2:00pm"] = res.name;
+                                    break;
+                                case 14:
+                                    row["2:00pm to 4:00pm"] = res.name;
+                                    break;
+                                case 16:
+                                    row["4:00pm to 6:00pm"] = res.name;
+                                    break;
+                                case 18:
+                                    row["6:00pm to 8:00pm"] = res.name;
+                                    break;
+                                case 20:
+                                    row["8:00pm to 10:00pm"] = res.name;
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
                     table.Rows.Add(row);

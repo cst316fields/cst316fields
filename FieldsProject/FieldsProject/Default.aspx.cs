@@ -18,20 +18,17 @@ namespace FieldsProject
 
         protected void Fields_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = new DataService().getAllFields();
-            GridView1.DataBind();
+            Page.Response.Redirect("/Pages/showFieldsPage.aspx");
         }
 
         protected void Reservations_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = new DataService().getAllReservations();
-            GridView1.DataBind();
+            Page.Response.Redirect("/Pages/showReservationsPage.aspx");
         }
 
         protected void MyReservations_Click(object sender, EventArgs e)
         {
-            Field field = new DataService().getField(1);
-            TestTextBox.Text = string.Format("Field {0} is a {1} field.", field.fieldID.ToString(), field.fieldType).ToString();
+            Page.Response.Redirect("/Pages/Login.aspx");    
         }
     }
 }
