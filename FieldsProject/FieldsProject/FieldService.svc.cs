@@ -234,7 +234,25 @@ namespace Service1
 
         public DataTable getReservationsByPerson(string name)
         {
-            throw new NotImplementedException();
+            DataTable table = new DataTable();
+            using (fieldsEntities context = new fieldsEntities())
+            {
+                table.Columns.Add("Field #", typeof(int));
+                table.Columns.Add("Field Name", typeof(string));
+                table.Columns.Add("Address", typeof(string));
+                table.Columns.Add("Date and time", typeof(string));
+                foreach (var res in (from r in context.ReservationEntities where r.name == name select r))
+                {
+                    var row = table.NewRow();
+                    var field = (from f in context.FieldEntities where f.Id == res.Id select f).First();
+                    row["Field Name"] = field.name;
+                    row["Address"] = field.address;
+                    row["Field #"] = res.Id;
+                    row["Date and time"] = res.date.Date.ToString();
+                    table.Rows.Add(row);
+                }
+            }
+            return table;
         }
 
         public DataTable getReservationsByField(int fieldId)
