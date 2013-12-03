@@ -133,12 +133,13 @@ namespace FieldsProject
         bool authenticateUser(string userName, string password);
 
         /// <summary>
-        /// Adds a new user, and adds the person.  User names are unique.
+        /// Adds a new user, and adds the person.  User names are unique- returns false if failed to add.
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="password"></param>
+        /// <returns>bool</returns>
         [OperationContract]
-        void createUser(string userName, string password, string phoneNum, string address);
+        bool createUser(string userName, string password, string phoneNum, string address);
     }
 
     [DataContract]

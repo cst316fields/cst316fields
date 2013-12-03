@@ -261,9 +261,30 @@ namespace Service1
             return authenticated;
         }
 
-        public void createUser(string userName, string password, string phoneNum, string address)
+        public bool createUser(string userName, string password, string phoneNum, string address)
         {
-            throw new NotImplementedException();
+            bool success = true;
+            UserEntity user = new UserEntity();
+            PersonEntity person = new PersonEntity();
+            user.username = userName;
+            user.password = password;
+            person.name = userName;
+            person.phone = phoneNum;
+            person.address = address;
+            try
+            {
+                using (fieldsEntities context = new fieldsEntities())
+                {
+                    context.UserEntities.Add(user);
+                    context.PersonEntities.Add(person);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                success = false;
+            }
+            return success;
         }
 
         private Field translateFieldEntity( FieldEntity fieldEntity)
