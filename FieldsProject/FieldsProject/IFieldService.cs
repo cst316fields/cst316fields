@@ -89,7 +89,7 @@ namespace FieldsProject
         /// <param name="date"></param>
         /// <returns>DataTable</returns>
         [OperationContract]
-        DataTable getReservationsByDate(string date);
+        DataTable getReservationsByDate(DateTime date);
 
         /// <summary>
         /// Returns all reservations make by given person

@@ -44,6 +44,8 @@ namespace Service1
             return table;
         }
 
+
+
         public DataTable getAllFields()
         {
             var table = new DataTable();
@@ -52,11 +54,17 @@ namespace Service1
 
                 table.Columns.Add("Id", typeof(int));
                 table.Columns.Add("Type", typeof(string));
+                table.Columns.Add("Name", typeof(string));
+                table.Columns.Add("Address", typeof(string));
+                table.Columns.Add("Description", typeof(string));
                 foreach (var entity in context.FieldEntities)
                 {
                     var row = table.NewRow();
                     row["Id"] = entity.Id;
                     row["Type"] = entity.type;
+                    row["Name"] = entity.name;
+                    row["Address"] = entity.address;
+                    row["Description"] = entity.description;
                     table.Rows.Add(row);
                 }
             }
@@ -163,9 +171,65 @@ namespace Service1
             throw new NotImplementedException();
         }
 
-        public DataTable getReservationsByDate(string date)
+        public DataTable getReservationsByDate(DateTime date)
         {
-            throw new NotImplementedException();
+            DataTable table = new DataTable();
+            using (fieldsEntities context = new fieldsEntities())
+            {
+                table.Columns.Add("Field #", typeof(int));
+                table.Columns.Add("Field Name", typeof(string));
+                table.Columns.Add("8:00am to 10:00am", typeof(string));
+                table.Columns.Add("10:00am to 12:00pm", typeof(string));
+                table.Columns.Add("12:00pm to 2:00pm", typeof(string));
+                table.Columns.Add("2:00pm to 4:00pm", typeof(string));
+                table.Columns.Add("4:00pm to 6:00pm", typeof(string));
+                table.Columns.Add("6:00pm to 8:00pm", typeof(string));
+                table.Columns.Add("8:00pm to 10:00pm", typeof(string));
+                foreach (var field in context.FieldEntities)
+                {
+                    var row = table.NewRow();
+                    row["Field #"] = field.Id;
+                    row["Field Name"] = field.name;
+                    row["8:00am to 10:00am"] = "Unreserved";
+                    row["10:00am to 12:00pm"] = "Unreserved";
+                    row["12:00pm to 2:00pm"] = "Unreserved";
+                    row["2:00pm to 4:00pm"] = "Unreserved";
+                    row["4:00pm to 6:00pm"] = "Unreserved";
+                    row["6:00pm to 8:00pm"] = "Unreserved";
+                    row["8:00pm to 10:00pm"] = "Unreserved";
+                    foreach (var res in (from r in context.ReservationEntities where r.Id == field.Id select r))
+                    {
+                        switch (res.date.Hour)
+                        {
+                            case 8:
+                                row["8:00am to 10:00am"] = res.name;
+                                break;
+                            case 10:
+                                row["10:00am to 12:00pm"] = res.name;
+                                break;
+                            case 12:
+                                row["12:00pm to 2:00pm"] = res.name;
+                                break;
+                            case 14:
+                                row["2:00pm to 4:00pm"] = res.name;
+                                break;
+                            case 16:
+                                row["4:00pm to 6:00pm"] = res.name;
+                                break;
+                            case 18:
+                                row["6:00pm to 8:00pm"] = res.name;
+                                break;
+                            case 20:
+                                row["8:00pm to 10:00pm"] = res.name;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    table.Rows.Add(row);
+                }
+            }
+            return table;
         }
 
         public DataTable getReservationsByPerson(string name)
