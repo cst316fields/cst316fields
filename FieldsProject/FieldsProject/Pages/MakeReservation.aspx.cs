@@ -9,6 +9,7 @@ namespace FieldsProject.Pages
 {
     public partial class MakeReservation : System.Web.UI.Page
     {
+        private calendarChanged = false;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,7 +17,11 @@ namespace FieldsProject.Pages
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            //check date, time, and field is selected
+            if(checkForm())
+            {
+
+
+            }
             //try to add 
             // if it adds go back to MyReservations
         }
@@ -34,6 +39,20 @@ namespace FieldsProject.Pages
         protected void Button2_Click(object sender, EventArgs e)
         {
             Page.Response.Redirect("CancelReservation.aspx");
+        }
+
+        private bool checkForm()
+        {
+            bool good = false;
+            if (MakeResText.Text != string.Empty)
+                good = true;
+            if ()
+            return good;
+        }
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
