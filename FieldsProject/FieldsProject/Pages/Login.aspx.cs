@@ -12,7 +12,6 @@ namespace FieldsProject.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -25,7 +24,7 @@ namespace FieldsProject.Pages
             if (new DataService().authenticateUser(LoginUserText.Text, LoginPassText.Text))
             {
                 this.Session["userName"] = LoginUserText.Text.ToString();
-                this.Session["userLoggedOn"] = true;
+                this.Session["password"] = LoginPassText.Text.ToString();
                 Page.Response.Redirect("MyReservations.aspx");
             }
             else { clearPage(); }

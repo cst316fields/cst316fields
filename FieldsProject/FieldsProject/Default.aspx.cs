@@ -13,7 +13,7 @@ namespace FieldsProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Session["userLoggedOn"] = false;
+         
         }
 
         protected void Fields_Click(object sender, EventArgs e)
@@ -28,8 +28,8 @@ namespace FieldsProject
 
         protected void MyReservations_Click(object sender, EventArgs e)
         {
-            if ((bool)this.Session["userLoggedOn"] == true)
-                Page.Response.Redirect("MyReservations.aspx");
+            if (this.Session["userName"] != null)
+                Page.Response.Redirect("/Pages/MyReservations.aspx");
             Page.Response.Redirect("/Pages/Login.aspx");    
         }
     }
