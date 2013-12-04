@@ -285,12 +285,15 @@ namespace Service1
         public bool authenticateUser(string userName, string password)
         {
             bool authenticated = false;
-            using (fieldsEntities context = new fieldsEntities())
+            if (userName.Length > 0 && password.Length > 0)
             {
-                foreach(var user in (from u in context.UserEntities where u.username == userName select u))
+                using (fieldsEntities context = new fieldsEntities())
                 {
-                    if (user.password == password)
-                        authenticated = true;
+                    foreach (var user in (from u in context.UserEntities where u.username == userName select u))
+                    {
+                        if (user.password == password)
+                            authenticated = true;
+                    }
                 }
             }
             return authenticated;

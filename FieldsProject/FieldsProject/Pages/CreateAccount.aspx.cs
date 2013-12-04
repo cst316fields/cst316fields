@@ -12,7 +12,6 @@ namespace FieldsProject.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            clearFields();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -22,10 +21,10 @@ namespace FieldsProject.Pages
                 //should show message with error here instead of just clearing out all boxes
                 clearFields();
             }
+               
             else if (new DataService().createUser(CreateNameText.Text, CreatePassText.Text, CreatePhoneText.Text, CreateEmailText.Text))
             {
                 this.Session["userName"] = CreateNameText.Text.ToString();
-                this.Session["userLoggedOn"] = true;
                 Page.Response.Redirect("MyReservations.aspx");
             }
             else
