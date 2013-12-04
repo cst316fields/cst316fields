@@ -8,7 +8,8 @@
         
             <td class="container_button">
 
-                <div class="nav_button_inactive">Fields</div>
+                <asp:Button CssClass="nav_button" ID="Button1" runat="server" OnClick="Button1_Click" Text="Fields" />
+                <br />
                 <asp:Button CssClass="nav_button" ID="Button2" runat="server" OnClick="Button2_Click" Text="Reservations" />
                 <br />
                 <asp:Button CssClass="nav_button" ID="Button3" runat="server" OnClick="Button3_Click" Text="My Reservations" />

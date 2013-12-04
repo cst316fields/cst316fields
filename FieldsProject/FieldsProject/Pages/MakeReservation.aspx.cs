@@ -12,9 +12,12 @@ namespace FieldsProject.Pages
     {
         private bool calendarChanged = false;
         private bool timeChanged = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Or set this to only get a few fields to cut down on width of gridview.
+            GridViewFieldPage.DataSource = new DataService().getAllFields();
+            GridViewFieldPage.DataBind();
         }
 
         protected void Button4_Click(object sender, EventArgs e)
