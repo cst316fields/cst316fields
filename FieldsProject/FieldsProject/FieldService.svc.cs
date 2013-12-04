@@ -9,6 +9,7 @@ using System.Text;
 using System.Data;
 using System.Data.Common;
 using FieldsProject;
+using Microsoft.Ajax.Utilities;
 
 
 namespace Service1
@@ -216,9 +217,11 @@ namespace Service1
 
         public DataTable getReservationsByPerson(string name)
         {
+            int count = 1;
             DataTable table = new DataTable();
             using (fieldsEntities context = new fieldsEntities())
             {
+                table.Columns.Add("Reservation #", typeof(int));
                 table.Columns.Add("Field #", typeof(int));
                 table.Columns.Add("Field Name", typeof(string));
                 table.Columns.Add("Address", typeof(string));
@@ -227,11 +230,13 @@ namespace Service1
                 {
                     var row = table.NewRow();
                     var field = (from f in context.FieldEntities where f.Id == res.Id select f).First();
+                    row["Reservation #"] = count;
                     row["Field Name"] = field.name;
                     row["Address"] = field.address;
                     row["Field #"] = res.Id;
                     row["Date and time"] = res.date.Date.ToString();
                     table.Rows.Add(row);
+                    count++;
                 }
             }
             return table;
@@ -278,6 +283,28 @@ namespace Service1
             catch (Exception ex)
             {
                 success = false;
+            }
+            return success;
+        }
+
+        public bool deleteReservation(int fieldId, string Pname, DateTime Pdate)
+        {
+            bool success = true;
+
+            using (fieldsEntities context = new fieldsEntities())
+            {
+                var res = (from res1 in context.ReservationEntities where res1.Id==fieldId && 
+                               res1.name==Pname && res1.date==Pdate select res1).FirstOrDefault();
+
+                try
+                {
+                    context.ReservationEntities.Remove(res);
+                    context.SaveChanges();
+                }
+                catch(Exception)
+                {
+                    success=false;
+                }
             }
             return success;
         }
