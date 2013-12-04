@@ -306,20 +306,34 @@ namespace Service1
             person.name = userName;
             person.phone = phoneNum;
             person.address = address;
-            try
+            using (fieldsEntities context = new fieldsEntities())
             {
-                using (fieldsEntities context = new fieldsEntities())
+                foreach (var use in (from u in context.UserEntities where u.username == userName select u))
                 {
-                    context.UserEntities.Add(user);
-                    context.PersonEntities.Add(person);
-                    context.SaveChanges();
+                    success = false;
                 }
+                foreach (var per in (from p in context.PersonEntities where p.name == userName select p))
+                {
+                    success = false;
+                }
+                if (success)
+                {
+                    try
+                    {
+                        {
+                            context.UserEntities.Add(user);
+                            context.PersonEntities.Add(person);
+                            context.SaveChanges();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        success = false;
+                    }
+                    
+                }
+                return success;
             }
-            catch (Exception ex)
-            {
-                success = false;
-            }
-            return success;
         }
 
         private Field translateFieldEntity( FieldEntity fieldEntity)
