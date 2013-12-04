@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace FieldsProject.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //login username is going to need to be store so we can load the gridview with the right info.
+            GridView1.DataSource = new DataService().getReservationsByPerson((string)this.Session["userName"]);
+            GridView1.DataBind();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
