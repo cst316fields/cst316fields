@@ -34,13 +34,17 @@
 
             <br />
 
+            <div style="text-align: center">or <asp:LinkButton runat="server" OnClick="CreateNew_Click">Create a New Account</asp:LinkButton>.</div>
+
+            <br />
+
             <table>
                 <tr>
                     <td>
-                        <asp:Button CssClass="nav_button" ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" />
+                        <asp:Button CssClass="nav_button" ID="ButtonLogin" runat="server" OnClick="ButtonLogin_Click" Text="Login" />
                     </td>
                     <td>
-                        <asp:Button CssClass="nav_button" ID="Button2" runat="server" OnClick="Button2_Click" Text="Create" />
+                        <asp:Button CssClass="nav_button" ID="ButtonCancel" runat="server" OnClick="ButtonCancel_Click" Text="Cancel" />
                     </td>
                 </tr>
             </table>

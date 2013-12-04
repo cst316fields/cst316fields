@@ -14,12 +14,17 @@ namespace FieldsProject.Pages
         {
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void CreateNew_Click(object sender, EventArgs e)
         {
             Page.Response.Redirect("CreateAccount.aspx");
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void ButtonCancel_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect("~/");
+        }
+
+        protected void ButtonLogin_Click(object sender, EventArgs e)
         {
             if (new DataService().authenticateUser(LoginUserText.Text, LoginPassText.Text))
             {
