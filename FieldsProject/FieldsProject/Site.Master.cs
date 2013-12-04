@@ -68,7 +68,13 @@ namespace FieldsProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+        }
+
+        protected void LogOut_clicked(object sender, EventArgs e)
+        {
+            this.Session["userName"] = null;
+            Page.Response.Redirect("~/");
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
