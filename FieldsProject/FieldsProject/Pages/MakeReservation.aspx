@@ -11,7 +11,7 @@
     <br />
     <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Main Menu" Width="140px" />
     <asp:Calendar ID="CalendarMakeRes" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
-    <asp:DropDownList ID="DropDownList1" runat="server" Width="201px">
+    <asp:DropDownList ID="DropDownList1" runat="server" Width="201px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         <asp:ListItem Value="8">8:00am to 10:00am</asp:ListItem>
         <asp:ListItem Value="10">10:00am to 12:00pm</asp:ListItem>
         <asp:ListItem Value="12">12:00pm to 2:00pm</asp:ListItem>

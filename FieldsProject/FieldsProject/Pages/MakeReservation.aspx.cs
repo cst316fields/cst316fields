@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace FieldsProject.Pages
     public partial class MakeReservation : System.Web.UI.Page
     {
         private bool calendarChanged = false;
+        private bool timeChanged = false;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -19,11 +21,16 @@ namespace FieldsProject.Pages
         {
             if(checkForm())
             {
-
-
+                new DataService().addReservation(Convert.ToInt32(MakeResText.Text),(string)this.Session["userName"],
+                    new DateTime(CalendarMakeRes.SelectedDate.Year,CalendarMakeRes.SelectedDate.Month,
+                    CalendarMakeRes.SelectedDate.Day, Convert.ToInt32(DropDownList1.SelectedValue), 0,0));
+                Page.Response.Redirect("MyReservations.aspx");
             }
-            //try to add 
-            // if it adds go back to MyReservations
+            else 
+            {
+                //clearing fields by reloading the page, bad selection made
+                Page.Response.Redirect("MakeReservation.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -44,9 +51,11 @@ namespace FieldsProject.Pages
         private bool checkForm()
         {
             bool good = false;
-            if (MakeResText.Text != string.Empty)
+            if (MakeResText.Text != string.Empty) 
                 good = true;
             if (calendarChanged)
+                good = true;
+            if (timeChanged)
                 good = true;
             return good;
         }
@@ -54,6 +63,11 @@ namespace FieldsProject.Pages
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             calendarChanged = true;
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            timeChanged = true;
         }
     }
 }

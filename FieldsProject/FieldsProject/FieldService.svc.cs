@@ -308,32 +308,22 @@ namespace Service1
             person.address = address;
             using (fieldsEntities context = new fieldsEntities())
             {
-                foreach (var use in (from u in context.UserEntities where u.username == userName select u))
+                try
+                {
+                    {
+                        context.UserEntities.Add(user);
+                        context.PersonEntities.Add(person);
+                        context.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
                 {
                     success = false;
                 }
-                foreach (var per in (from p in context.PersonEntities where p.name == userName select p))
-                {
-                    success = false;
-                }
-                if (success)
-                {
-                    try
-                    {
-                        {
-                            context.UserEntities.Add(user);
-                            context.PersonEntities.Add(person);
-                            context.SaveChanges();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        success = false;
-                    }
-                    
-                }
-                return success;
+
             }
+            return success;
+
         }
 
         private Field translateFieldEntity( FieldEntity fieldEntity)
