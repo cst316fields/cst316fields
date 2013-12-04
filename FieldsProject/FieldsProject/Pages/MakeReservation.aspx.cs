@@ -17,7 +17,7 @@ namespace FieldsProject.Pages
         protected void Button4_Click(object sender, EventArgs e)
         {
             //check date, time, and field is selected
-            //try to add
+            //try to add 
             // if it adds go back to MyReservations
         }
 

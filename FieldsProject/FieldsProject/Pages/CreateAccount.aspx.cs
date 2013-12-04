@@ -24,6 +24,7 @@ namespace FieldsProject.Pages
             }
             else if (new DataService().createUser(CreateNameText.Text, CreatePassText.Text, CreatePhoneText.Text, CreateEmailText.Text))
             {
+                this.Session["userName"] = CreateNameText.Text.ToString();
                 Page.Response.Redirect("MyReservations.aspx");
             }
             else
