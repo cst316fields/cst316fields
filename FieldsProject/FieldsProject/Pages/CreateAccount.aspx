@@ -9,7 +9,7 @@
     </p>
     <p>
         Phone Num:&nbsp;
-        <asp:TextBox ID="CreatePhoneText" runat="server" Width="192px"></asp:TextBox>
+        <asp:TextBox ID="CreatePhoneText" runat="server" Width="192px" OnTextChanged="CreatePhoneText_TextChanged"></asp:TextBox>
     </p>
     <p>
         Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

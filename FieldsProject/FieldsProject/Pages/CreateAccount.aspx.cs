@@ -51,5 +51,10 @@ namespace FieldsProject.Pages
             CreatePassText.Text = string.Empty;
             CreateRePassText.Text = string.Empty;
         }
+
+        protected void CreatePhoneText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

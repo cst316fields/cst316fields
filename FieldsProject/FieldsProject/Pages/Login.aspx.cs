@@ -26,6 +26,13 @@ namespace FieldsProject.Pages
             {
                 Page.Response.Redirect("MyReservations.aspx");
             }
+            else { clearPage(); }
+        }
+
+        private void clearPage()
+        {
+            LoginUserText.Text = string.Empty;
+            LoginPassText.Text = string.Empty;
         }
     }
 }
