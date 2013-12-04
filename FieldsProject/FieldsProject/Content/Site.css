@@ -56,17 +56,6 @@ td.container_content {
     padding: 10px;
 }
 
-.nav_button_inactive {
-    border: 0px;
-    width: 200px;
-    outline: none;
-    color: #999999;
-    font-size: large;
-    background-color: #444444;
-    text-align: center;
-    padding: 10px;
-}
-
 .nav_button:hover {
     background-color: #5D7B9D;
     color: white;
@@ -90,6 +79,22 @@ div.form_container {
 table.form_container {
     margin-left: auto;
     margin-right: auto;
+}
+
+div.centered {
+    margin: 0 auto;
+}
+
+div.make_reservation_container {
+    background-color: #cfcfcf;
+    margin: 0px;
+    padding: 10px;
+    border: 5px solid #5D7B9D;
+}
+
+td.far_right_content {
+    margin-top: 20px;
+    padding: 10px;
 }
 
 td.form_text {
