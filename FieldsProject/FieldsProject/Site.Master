@@ -43,7 +43,6 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" runat="server" href="~/">Parks & Recreation</a>
                 </div>
-                <!--
                 <div class="navbar-collapse collapse">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -62,7 +61,6 @@
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
-                -->
             </div>
         </div>
         <div class="container body-content">

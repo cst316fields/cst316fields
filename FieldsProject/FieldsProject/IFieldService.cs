@@ -114,6 +114,9 @@ namespace FieldsProject
         /// <returns>bool</returns>
         [OperationContract]
         bool createUser(string userName, string password, string phoneNum, string address);
+
+        [OperationContract]
+        bool deleteReservation(int fieldId, string Pname, DateTime Pdate);
     }
 
     [DataContract]
