@@ -9,7 +9,7 @@ namespace FieldsProject.Pages
 {
     public partial class MakeReservation : System.Web.UI.Page
     {
-        private calendarChanged = false;
+        private bool calendarChanged = false;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -46,13 +46,14 @@ namespace FieldsProject.Pages
             bool good = false;
             if (MakeResText.Text != string.Empty)
                 good = true;
-            if ()
+            if (calendarChanged)
+                good = true;
             return good;
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-            
+            calendarChanged = true;
         }
     }
 }
