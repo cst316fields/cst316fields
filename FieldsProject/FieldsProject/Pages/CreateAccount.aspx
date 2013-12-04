@@ -33,7 +33,7 @@
                     <td class="form_text">Email:
                     </td>
                     <td class="form_field">
-                        <asp:TextBox ID="CreateEmailText" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="CreateEmailText" runat="server" OnTextChanged="CreateEmailText_TextChanged"></asp:TextBox>
                     </td>
 
                 </tr><tr>

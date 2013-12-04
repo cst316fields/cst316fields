@@ -4,13 +4,13 @@
 
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Make" Width="141px" />
 &nbsp;&nbsp;&nbsp; field Id
-    <asp:TextBox ID="MakeResText" runat="server" Width="194px"></asp:TextBox>
+    <asp:TextBox ID="makeReservationTextBox" runat="server" Width="194px"></asp:TextBox>
     <br />
     <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Cancel" Width="136px" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
     <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Main Menu" Width="140px" />
-    <asp:Calendar ID="CalendarMakeRes" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
+    <asp:Calendar ID="calendarMakeRes" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
     <asp:DropDownList ID="DropDownList1" runat="server" Width="201px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         <asp:ListItem Value="8">8:00am to 10:00am</asp:ListItem>
         <asp:ListItem Value="10">10:00am to 12:00pm</asp:ListItem>

@@ -21,9 +21,9 @@ namespace FieldsProject.Pages
         {
             if(checkForm())
             {
-                new DataService().addReservation(Convert.ToInt32(MakeResText.Text),(string)this.Session["userName"],
-                    new DateTime(CalendarMakeRes.SelectedDate.Year,CalendarMakeRes.SelectedDate.Month,
-                    CalendarMakeRes.SelectedDate.Day, Convert.ToInt32(DropDownList1.SelectedValue), 0,0));
+                new DataService().addReservation(Convert.ToInt32(makeReservationTextBox.Text),(string)this.Session["userName"],
+                    new DateTime(calendarMakeRes.SelectedDate.Year,calendarMakeRes.SelectedDate.Month,
+                    calendarMakeRes.SelectedDate.Day, Convert.ToInt32(DropDownList1.SelectedValue), 0,0));
                 Page.Response.Redirect("MyReservations.aspx");
             }
             else 
@@ -51,7 +51,7 @@ namespace FieldsProject.Pages
         private bool checkForm()
         {
             bool good = false;
-            if (MakeResText.Text != string.Empty) 
+            if (makeReservationTextBox.Text != string.Empty) 
                 good = true;
             if (calendarChanged)
                 good = true;

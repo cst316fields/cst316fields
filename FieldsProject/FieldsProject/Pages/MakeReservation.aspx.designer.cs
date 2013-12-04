@@ -22,13 +22,13 @@ namespace FieldsProject.Pages {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// makeReservationTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox makeReservationTextBox;
         
         /// <summary>
         /// Button2 control.
@@ -49,13 +49,13 @@ namespace FieldsProject.Pages {
         protected global::System.Web.UI.WebControls.Button Button3;
         
         /// <summary>
-        /// Calendar1 control.
+        /// calendarMakeRes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.WebControls.Calendar calendarMakeRes;
         
         /// <summary>
         /// DropDownList1 control.

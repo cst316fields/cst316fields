@@ -323,7 +323,30 @@ namespace Service1
 
             }
             return success;
+        }
 
+        public bool deleteReservation(int fieldId, string Pname, DateTime Pdate)
+        {
+            bool success = true;
+
+            using (fieldsEntities context = new fieldsEntities())
+            {
+                var res = (from res1 in context.ReservationEntities
+                           where res1.Id == fieldId &&
+                               res1.name == Pname && res1.date == Pdate
+                           select res1).FirstOrDefault();
+
+                try
+                {
+                    context.ReservationEntities.Remove(res);
+                    context.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    success = false;
+                }
+            }
+            return success;
         }
 
         private Field translateFieldEntity( FieldEntity fieldEntity)

@@ -57,5 +57,10 @@ namespace FieldsProject.Pages
         {
 
         }
+
+        protected void CreateEmailText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
