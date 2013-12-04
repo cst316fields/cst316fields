@@ -41,7 +41,7 @@ namespace FieldsProject.Pages
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("showFieldsPage.aspx");
+            Page.Response.Redirect("../default.aspx");
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)

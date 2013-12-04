@@ -40,7 +40,7 @@ namespace FieldsProject.Pages
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Page.Response.Redirect("default.aspx");
+            Page.Response.Redirect("../default.aspx");
         }
 
         protected void Button2_Click(object sender, EventArgs e)

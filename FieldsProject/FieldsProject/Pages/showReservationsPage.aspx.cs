@@ -27,6 +27,8 @@ namespace FieldsProject.Pages
 
         protected void Button3_Click(object sender, EventArgs e)
         {
+            if ((bool)this.Session["userLoggedOn"] == true)
+                Page.Response.Redirect("MyReservations.aspx");
             Page.Response.Redirect("Login.aspx");
         }
 

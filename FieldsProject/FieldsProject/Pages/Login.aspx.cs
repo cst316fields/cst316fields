@@ -25,6 +25,7 @@ namespace FieldsProject.Pages
             if (new DataService().authenticateUser(LoginUserText.Text, LoginPassText.Text))
             {
                 this.Session["userName"] = LoginUserText.Text.ToString();
+                this.Session["userLoggedOn"] = true;
                 Page.Response.Redirect("MyReservations.aspx");
             }
             else { clearPage(); }

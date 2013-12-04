@@ -25,6 +25,7 @@ namespace FieldsProject.Pages
             else if (new DataService().createUser(CreateNameText.Text, CreatePassText.Text, CreatePhoneText.Text, CreateEmailText.Text))
             {
                 this.Session["userName"] = CreateNameText.Text.ToString();
+                this.Session["userLoggedOn"] = true;
                 Page.Response.Redirect("MyReservations.aspx");
             }
             else
@@ -40,8 +41,10 @@ namespace FieldsProject.Pages
 
         private bool checkFields()
         {
-            //need to finish this... return true if everything is good, false if some of the fields in text box are bad
-            return true;
+            bool good = false;
+            if (CreatePassText.Text == CreateRePassText.Text)
+                good = true;
+            return good;
         }
 
         private void clearFields()
