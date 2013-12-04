@@ -8,9 +8,9 @@
     <br />
     <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Main Menu" Width="126px" />
     <br />
-    <asp:GridView ID="GridViewResCancel" runat="server">
+    <asp:GridView ID="GridViewResCancel" runat="server" OnSelectedIndexChanged="GridViewResCancel_SelectedIndexChanged">
     </asp:GridView>
-    <asp:DropDownList ID="DropDownList1" runat="server" Width="162px">
+    <asp:DropDownList ID="DropDownList1" runat="server" Width="162px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
     </asp:DropDownList>
 
 
