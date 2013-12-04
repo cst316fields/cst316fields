@@ -12,11 +12,9 @@ namespace FieldsProject.Pages
     public partial class CancelReservation : System.Web.UI.Page
     {
         private DataTable d = new DataTable();
-        private string name;
         protected void Page_Load(object sender, EventArgs e)
         {
-            name = (string)this.Session["username"];
-            d = new DataService().getReservationsByPerson(name);
+            d = new DataService().getReservationsByPerson((string)this.Session["userName"]);
             GridViewResCancel.DataSource = d;
             GridViewResCancel.DataBind();
 
@@ -46,16 +44,21 @@ namespace FieldsProject.Pages
 
         protected void ButtonCancelSelected_Click(object sender, EventArgs e)
         {
-            // Code to remove from database here.
+            int count = 1;
+            foreach(DataRow row in d.Rows)
+            {
+                if (count == Convert.ToInt32(DropDownList1.Text))
+                {
+                    new DataService().deleteReservation(Convert.ToInt32(row.ItemArray[1]), (string)this.Session["userName"], (DateTime)row.ItemArray[4]);
+                    Page.Response.Redirect("CancelReservation.aspx");
+                }
+                count++;
+            }
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataRow row = d.Rows[Convert.ToInt32(DropDownList1.Text)];
-            int fieldid = Convert.ToInt32(row[1]);
-            DateTime date = Convert.ToDateTime(row[4]);
-            new DataService().deleteReservation(fieldid, name, date);
-            GridViewResCancel.DataSource = d;
+       
         }
 
         protected void GridViewResCancel_SelectedIndexChanged(object sender, EventArgs e)
