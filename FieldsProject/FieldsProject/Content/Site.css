@@ -76,3 +76,24 @@ div.footer {
     clear: both;
     text-align: center;
 }
+
+div.form_container {
+    width: 435px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 10px;
+    border: 5px solid #5D7B9D;
+}
+
+td.form_text {
+    height: 30px;
+    width: 100px;
+    text-align: right;
+}
+
+td.form_field {
+    padding-left: 10px;
+    height: 30px;
+    text-align: left;
+}
