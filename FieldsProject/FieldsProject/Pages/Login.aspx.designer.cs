@@ -13,22 +13,22 @@ namespace FieldsProject.Pages {
     public partial class Login {
         
         /// <summary>
-        /// TextBox2 control.
+        /// LoginUserText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox LoginUserText;
         
         /// <summary>
-        /// TextBox1 control.
+        /// LoginPassText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox LoginPassText;
         
         /// <summary>
         /// Button1 control.

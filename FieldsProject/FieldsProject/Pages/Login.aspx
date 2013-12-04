@@ -17,7 +17,7 @@
                     <td class="form_text">User Name:
                     </td>
                     <td class="form_field">
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="LoginUserText" runat="server"></asp:TextBox>
                     </td>
 
                 </tr><tr>
@@ -25,7 +25,7 @@
                     <td class="form_text">Password:
                     </td>
                     <td class="form_field">
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="LoginPassText" runat="server"></asp:TextBox>
                     </td>
 
                 </tr>
