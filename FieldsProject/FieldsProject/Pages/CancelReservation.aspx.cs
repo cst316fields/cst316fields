@@ -44,6 +44,11 @@ namespace FieldsProject.Pages
             Page.Response.Redirect("../default.aspx");
         }
 
+        protected void ButtonCancelSelected_Click(object sender, EventArgs e)
+        {
+            // Code to remove from database here.
+        }
+
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataRow row = d.Rows[Convert.ToInt32(DropDownList1.Text)];

@@ -92,6 +92,12 @@ div.make_reservation_container {
     border: 5px solid #5D7B9D;
 }
 
+table.cancel_reservation_container {
+    background-color: #cfcfcf;
+    padding: 10px;
+    border: 5px solid #5D7B9D;
+}
+
 td.far_right_content {
     margin-top: 20px;
     padding: 10px;
