@@ -22,6 +22,15 @@ namespace FieldsProject.Pages {
         protected global::System.Web.UI.WebControls.TextBox CreateNameText;
         
         /// <summary>
+        /// RequiredFieldValidatorUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorUser;
+        
+        /// <summary>
         /// CreatePhoneText control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace FieldsProject.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox CreatePhoneText;
+        
+        /// <summary>
+        /// RequiredFieldValidatorPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPhone;
         
         /// <summary>
         /// CreateEmailText control.
@@ -40,6 +58,15 @@ namespace FieldsProject.Pages {
         protected global::System.Web.UI.WebControls.TextBox CreateEmailText;
         
         /// <summary>
+        /// RequiredFieldValidatorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorEmail;
+        
+        /// <summary>
         /// CreatePassText control.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,15 @@ namespace FieldsProject.Pages {
         protected global::System.Web.UI.WebControls.TextBox CreatePassText;
         
         /// <summary>
+        /// RequiredFieldValidatorPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPass;
+        
+        /// <summary>
         /// CreateRePassText control.
         /// </summary>
         /// <remarks>
@@ -56,6 +92,15 @@ namespace FieldsProject.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox CreateRePassText;
+        
+        /// <summary>
+        /// CompareFieldValidatorRePass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareFieldValidatorRePass;
         
         /// <summary>
         /// Button1 control.
