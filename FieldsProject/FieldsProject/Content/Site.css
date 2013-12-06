@@ -113,3 +113,8 @@ td.form_field {
     height: 30px;
     text-align: left;
 }
+
+td.validate {
+    color: red;
+    padding-left: 10px;
+}

@@ -19,13 +19,17 @@
                     <td class="form_field">
                         <asp:TextBox ID="CreateNameText" runat="server"></asp:TextBox>
                     </td>
-                    <td>
+
+                </tr><tr>
+
+                    <td></td>
+                    <td class="validate">
                         <asp:RequiredFieldValidator id="RequiredFieldValidatorUser" runat="server"
                             ControlToValidate="CreateNameText"
-                            ErrorMessage="User Name is a required field."
-                            ForeColor="Red">
+                            ErrorMessage="User Name is a required field.">
                         </asp:RequiredFieldValidator>
                     </td>
+
                 </tr><tr>
 
                     <td class="form_text">Phone Num:
@@ -33,13 +37,17 @@
                     <td class="form_field">
                         <asp:TextBox ID="CreatePhoneText" runat="server" OnTextChanged="CreatePhoneText_TextChanged"></asp:TextBox>
                     </td>
-                    <td>
+
+                </tr><tr>
+
+                    <td></td>
+                    <td class="validate">
                         <asp:RequiredFieldValidator id="RequiredFieldValidatorPhone" runat="server"
                             ControlToValidate="CreatePhoneText"
-                            ErrorMessage="Phone number is a required field."
-                            ForeColor="Red">
+                            ErrorMessage="Phone number is a required field.">
                         </asp:RequiredFieldValidator>
                     </td>
+
                 </tr><tr>
 
                     <td class="form_text">Email:
@@ -47,13 +55,17 @@
                     <td class="form_field">
                         <asp:TextBox ID="CreateEmailText" runat="server" OnTextChanged="CreateEmailText_TextChanged"></asp:TextBox>
                     </td>
-                    <td>
+
+                </tr><tr>
+
+                    <td></td>
+                    <td class="validate">
                         <asp:RequiredFieldValidator id="RequiredFieldValidatorEmail" runat="server"
                             ControlToValidate="CreateEmailText"
-                            ErrorMessage="Email is a required field."
-                            ForeColor="Red">
+                            ErrorMessage="Email is a required field.">
                         </asp:RequiredFieldValidator>
                     </td>
+
                 </tr><tr>
 
                     <td class="form_text">Password:
@@ -61,13 +73,17 @@
                     <td class="form_field">
                         <asp:TextBox ID="CreatePassText" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
-                    <td>
+
+                </tr><tr>
+
+                    <td></td>
+                    <td class="validate">
                         <asp:RequiredFieldValidator id="RequiredFieldValidatorPass" runat="server"
                             ControlToValidate="CreatePassText"
-                            ErrorMessage="Password is a required field."
-                            ForeColor="Red">
+                            ErrorMessage="Password is a required field.">
                         </asp:RequiredFieldValidator>
                     </td>
+
                 </tr><tr>
 
                     <td class="form_text">Reenter Pass:
@@ -75,9 +91,12 @@
                     <td class="form_field">
                         <asp:TextBox ID="CreateRePassText" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
-                    <td>
+
+                </tr><tr>
+
+                    <td></td>
+                    <td class="validate">
                         <asp:CompareValidator id="CompareFieldValidatorRePass" runat="server"
-                           ForeColor="Red"
                            ControlToValidate="CreateRePassText"
                            ControlToCompare="CreatePassText"
                            Type="String"

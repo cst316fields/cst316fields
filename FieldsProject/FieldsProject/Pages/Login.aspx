@@ -19,13 +19,17 @@
                     <td class="form_field">
                         <asp:TextBox ID="LoginUserText" runat="server"></asp:TextBox>
                     </td>
-                     <td>
+                     
+                </tr><tr>
+
+                    <td></td>
+                    <td class="validate">
                         <asp:RequiredFieldValidator id="RequiredFieldValidatorLogUser" runat="server"
                             ControlToValidate="LoginUserText"
-                            ErrorMessage="Name is a required field."
-                            ForeColor="Red">
+                            ErrorMessage="User name is a required field.">
                         </asp:RequiredFieldValidator>
                     </td>
+
                 </tr><tr>
 
                     <td class="form_text">Password:
@@ -33,13 +37,18 @@
                     <td class="form_field">
                         <asp:TextBox ID="LoginPassText" runat="server" TextMode ="Password"></asp:TextBox>
                     </td>
-                    <td>
+
+                </tr><tr>
+
+                    <td></td>
+                    <td class="validate">
                         <asp:RequiredFieldValidator id="RequiredFieldValidatorLogPass" runat="server"
                             ControlToValidate="LoginPassText"
                             ErrorMessage="Password is a required field."
                             ForeColor="Red">
                         </asp:RequiredFieldValidator>
                     </td>
+
                 </tr>
 
             </table>
