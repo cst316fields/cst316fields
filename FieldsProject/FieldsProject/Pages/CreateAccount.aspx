@@ -96,7 +96,7 @@
                         <asp:Button CssClass="nav_button" ID="Button1" runat="server" OnClick="Button1_Click" Text="Create" />
                     </td>
                     <td>
-                        <asp:Button CssClass="nav_button" ID="Button2" runat="server" OnClick="Button2_Click" Text="Cancel" />
+                        <asp:Button CssClass="nav_button" ID="Button2" runat="server" OnClick="Button2_Click" Text="Cancel" CausesValidation="false" />
                     </td>
                 </tr>
             </table>
