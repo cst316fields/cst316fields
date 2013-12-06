@@ -22,6 +22,15 @@ namespace FieldsProject.Pages {
         protected global::System.Web.UI.WebControls.TextBox LoginUserText;
         
         /// <summary>
+        /// RequiredFieldValidatorLogUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorLogUser;
+        
+        /// <summary>
         /// LoginPassText control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace FieldsProject.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox LoginPassText;
+        
+        /// <summary>
+        /// RequiredFieldValidatorLogPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorLogPass;
         
         /// <summary>
         /// ButtonLogin control.
