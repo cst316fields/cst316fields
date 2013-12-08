@@ -165,6 +165,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="FieldService.svc" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="images\baseball.jpg" />
+    <Content Include="images\football.jpg" />
+    <Content Include="images\soccer.jpg" />
+    <Content Include="images\softball.jpg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -461,6 +465,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

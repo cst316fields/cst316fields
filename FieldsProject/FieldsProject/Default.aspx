@@ -26,6 +26,35 @@
             </td>
 
         </tr>
+        <tr>
+            <td>
+                <hr />
+            </td>
+            <td>
+                <hr />
+            </td>
+            <td>
+                <hr />
+            </td>
+            <td>
+                <hr />
+            </td>
+        </tr> 
+        <tr>
+            <td>
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/baseball.jpg" />                
+            </td>
+            <td>
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/images/football.jpg" />
+            </td>
+            <td>
+                <asp:Image ID="Image3" runat="server" ImageUrl="~/images/soccer.jpg" />
+            </td>
+            <td>
+                <asp:Image ID="Image4" runat="server" ImageUrl="~/images/softball.jpg" />
+            </td>
+
+        </tr>
 
     </table>
   
