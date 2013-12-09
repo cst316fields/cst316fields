@@ -340,7 +340,8 @@ namespace Service1
             {
                 try
                 {
-                    foreach (var res in (from r in context.ReservationEntities where r.Id == fieldId && r.name == Pname && r.date.Day == Pdate.Day && r.date.Hour == Pdate.Hour select r))
+                    foreach (var res in (from r in context.ReservationEntities where r.Id == fieldId && r.name == Pname &&
+                              r.date.Month == Pdate.Month && r.date.Year == Pdate.Year && r.date.Day == Pdate.Day && r.date.Hour == Pdate.Hour select r))
                     {
                         context.ReservationEntities.Remove(res);
                     }
