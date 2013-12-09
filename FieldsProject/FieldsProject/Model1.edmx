@@ -26,6 +26,7 @@
         <EntityType Name="Reservation">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="date" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
@@ -39,18 +40,6 @@
           <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Reservation_Field">
-          <End Role="Field" Type="Self.Field" Multiplicity="1" />
-          <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Field">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reservation">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reservation_Person">
           <End Role="Person" Type="Self.Person" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
@@ -68,10 +57,6 @@
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Reservation_Field" Association="Self.FK_Reservation_Field">
-            <End Role="Field" EntitySet="Field" />
-            <End Role="Reservation" EntitySet="Reservation" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reservation_Person" Association="Self.FK_Reservation_Person">
             <End Role="Person" EntitySet="Person" />
             <End Role="Reservation" EntitySet="Reservation" />
@@ -90,7 +75,6 @@
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Reservation" Relationship="fieldsModel.FK_Reservation_Field" FromRole="FieldEntity" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="PersonEntity">
           <Key>
@@ -114,10 +98,6 @@
           <EntitySet Name="PersonEntities" EntityType="fieldsModel.PersonEntity" />
           <EntitySet Name="UserEntities" EntityType="fieldsModel.UserEntity" />
           <EntitySet Name="ReservationEntities" EntityType="fieldsModel.ReservationEntity" />
-          <AssociationSet Name="FK_Reservation_Field" Association="fieldsModel.FK_Reservation_Field">
-            <End Role="FieldEntity" EntitySet="FieldEntities" />
-            <End Role="Reservation" EntitySet="ReservationEntities" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reservation_Person" Association="fieldsModel.FK_Reservation_Person">
             <End Role="PersonEntity" EntitySet="PersonEntities" />
             <End Role="Reservation" EntitySet="ReservationEntities" />
@@ -126,25 +106,13 @@
         <EntityType Name="ReservationEntity">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="date" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Field" Relationship="fieldsModel.FK_Reservation_Field" FromRole="Reservation" ToRole="FieldEntity" />
           <NavigationProperty Name="Person" Relationship="fieldsModel.FK_Reservation_Person" FromRole="Reservation" ToRole="PersonEntity" />
         </EntityType>
-        <Association Name="FK_Reservation_Field">
-          <End Type="fieldsModel.FieldEntity" Role="FieldEntity" Multiplicity="1" />
-          <End Type="fieldsModel.ReservationEntity" Role="Reservation" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="FieldEntity">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reservation">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reservation_Person">
           <End Type="fieldsModel.PersonEntity" Role="PersonEntity" Multiplicity="1" />
           <End Type="fieldsModel.ReservationEntity" Role="Reservation" Multiplicity="*" />
@@ -157,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

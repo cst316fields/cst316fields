@@ -8,8 +8,7 @@
         <EntityTypeShape EntityType="fieldsModel.FieldEntity" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="fieldsModel.PersonEntity" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="fieldsModel.UserEntity" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="fieldsModel.ReservationEntity" Width="1.5" PointX="3" PointY="0.75" />
-        <AssociationConnector Association="fieldsModel.FK_Reservation_Field" />
+        <EntityTypeShape EntityType="fieldsModel.ReservationEntity" Width="1.5" PointX="3" PointY="6" />
         <AssociationConnector Association="fieldsModel.FK_Reservation_Person" />
         </Diagram>
     </edmx:Diagrams>

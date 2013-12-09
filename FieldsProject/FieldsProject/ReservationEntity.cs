@@ -18,7 +18,6 @@ namespace FieldsProject
         public string name { get; set; }
         public System.DateTime date { get; set; }
     
-        public virtual FieldEntity Field { get; set; }
         public virtual PersonEntity Person { get; set; }
     }
 }
