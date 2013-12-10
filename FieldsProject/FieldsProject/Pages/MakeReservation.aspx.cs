@@ -1,6 +1,7 @@
 ﻿using Service1;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -73,6 +74,14 @@ namespace FieldsProject.Pages
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             timeChanged = true;
+        }
+        protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+        {
+            if (e.Day.Date < DateTime.Now)
+            {
+                e.Cell.BackColor = ColorTranslator.FromHtml("#a9a9a9");
+                e.Day.IsSelectable = false;
+            }
         }
     }
 }
