@@ -227,15 +227,22 @@ namespace Service1
                 table.Columns.Add("Date and time", typeof(DateTime));
                 foreach (var res in (from r in context.ReservationEntities where r.name == name select r))
                 {
-                    var row = table.NewRow();
-                    var field = (from f in context.FieldEntities where f.Id == res.Id select f).First();
-                    row["Select"] = count;
-                    row["Field Name"] = field.name;
-                    row["Address"] = field.address;
-                    row["Field #"] = res.Id;
-                    row["Date and time"] = res.date;
-                    table.Rows.Add(row);
-                    count++;
+                    if (res.date < DateTime.Now)
+                    {
+                        deleteReservation(res.Id, res.name, res.date);
+                    }
+                    else
+                    {
+                        var row = table.NewRow();
+                        var field = (from f in context.FieldEntities where f.Id == res.Id select f).First();
+                        row["Select"] = count;
+                        row["Field Name"] = field.name;
+                        row["Address"] = field.address;
+                        row["Field #"] = res.Id;
+                        row["Date and time"] = res.date;
+                        table.Rows.Add(row);
+                        count++;
+                    }
                 }
             }
             return table;
