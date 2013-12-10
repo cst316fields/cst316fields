@@ -1,6 +1,7 @@
 ﻿using Service1;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -13,14 +14,19 @@ namespace FieldsProject.Pages
     {
         private bool calendarChanged = false;
         private bool timeChanged = false;
+        private DataTable d = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.Session["userName"] == null || !new DataService().authenticateUser((string)this.Session["userName"], (string)this.Session["password"]))
                 Page.Response.Redirect("../default.aspx");
-            // Or set this to only get a few fields to cut down on width of gridview.
-            GridViewFieldPage.DataSource = new DataService().getAllFields();
+            d = new DataService().getAllFields();
+            GridViewFieldPage.DataSource = d;
             GridViewFieldPage.DataBind();
+            foreach(DataRow row in d.Rows)
+            {
+                makeReservationTextBox.Items.Add(row["Id"].ToString());
+            }
         }
 
         protected void Button4_Click(object sender, EventArgs e)

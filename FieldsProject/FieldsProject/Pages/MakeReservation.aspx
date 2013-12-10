@@ -25,7 +25,7 @@
 
                             <td class="form_text" style="font-weight: bold; color: #333333">Field Id:</td>
                             <td class="form_field">
-                                <asp:TextBox ID="makeReservationTextBox" runat="server"></asp:TextBox>
+                                <asp:DropDownList ID="makeReservationTextBox" runat="server"></asp:DropDownList>
                             </td>
 
                         </tr>
