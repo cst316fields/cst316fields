@@ -14,6 +14,8 @@ namespace FieldsProject.Pages
         private DataTable d = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.Session["userName"] == null || !new DataService().authenticateUser((string)this.Session["userName"], (string)this.Session["password"]))
+                Page.Response.Redirect("../default.aspx");
             d = new DataService().getReservationsByPerson((string)this.Session["userName"]);
             GridViewResCancel.DataSource = d;
             GridViewResCancel.DataBind();

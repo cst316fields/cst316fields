@@ -15,6 +15,8 @@ namespace FieldsProject.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.Session["userName"] == null || !new DataService().authenticateUser((string)this.Session["userName"], (string)this.Session["password"]))
+                Page.Response.Redirect("../default.aspx");
             // Or set this to only get a few fields to cut down on width of gridview.
             GridViewFieldPage.DataSource = new DataService().getAllFields();
             GridViewFieldPage.DataBind();

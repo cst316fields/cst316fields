@@ -12,6 +12,8 @@ namespace FieldsProject.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.Session["userName"] == null || !new DataService().authenticateUser((string)this.Session["userName"], (string)this.Session["password"]))
+                Page.Response.Redirect("../default.aspx");
             GridView1.DataSource = new DataService().getReservationsByPerson((string)this.Session["userName"]);
             GridView1.DataBind();
         }
