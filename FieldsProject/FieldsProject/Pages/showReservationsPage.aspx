@@ -17,7 +17,7 @@
             </td>
             <td class="container_content">
 
-                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BorderColor="#5D7B9D" BorderStyle="Solid" BorderWidth="5px" ForeColor="#333333">
+                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" OnDayRender="Calendar1_DayRender" BorderColor="#5D7B9D" BorderStyle="Solid" BorderWidth="5px" ForeColor="#333333">
                     <DayHeaderStyle BackColor="#5D7B9D" ForeColor="White" />
                     <NextPrevStyle BorderColor="#5D7B9D" BorderWidth="5px" ForeColor="White" />
                     <TitleStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
